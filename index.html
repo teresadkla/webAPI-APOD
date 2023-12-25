@@ -17,16 +17,42 @@
 <body>
     <header></header>
     <main>
-        
+
         <div id="content">
             <!-- Display NASA API content here -->
         </div>
-
         <div id="content2">
-
         </div>
+
+
+        <div id="search-container">
+            <input type="text" id="searchInput" placeholder="YYYY-MM-DD">
+            <button onclick="performSearch()">Pesquisar</button>
+          </div>
+        <div id="content3"></div>
+
+
+
+
+        <div id="filter-container">
+            <label for="categorySelect">Escolha uma categoria:</label>
+            <select id="categorySelect">
+              <option value="all">Todas</option>
+              <option value="sun">Sol</option>
+              <option value="galaxy">Galáxias</option>
+              <!-- Adicione outras opções de categorias conforme necessário -->
+            </select>
+            <button onclick="performSearch2()">Filtrar</button>
+          </div>
+          <div id="content3"></div>
+        <div id="content4">
+           <p>contudo das categorias aqui</p> 
+        </div>
+
+
     </main>
     <script src="script.js"></script>
-    
+
 </body>
+
 </html>
