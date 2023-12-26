@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width">
 
     <!--para as fontes-->
+    <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
     <!--  <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Secular+One&display=swap"
@@ -15,7 +16,29 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <p>swipe up ↑</p>
+        <div id="logo">
+            <img src="conteudo/NasaDiscovery.svg" alt="logo website">
+        </div>
+        <div class="menu">
+            <ul class="menulist">
+                <li>
+                    <a href="#intro">
+                        <h4>Image of the day</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about">
+                        <h4>Latest 6</h4>
+                    </a>
+                </li>
+                <li><a href="#Contacts">
+                        <h4>Discover</h4>
+                    </a></li>
+            </ul>
+        </div>
+    </header>
     <main>
 
         <div id="content">
@@ -28,34 +51,36 @@
         <div id="search-container">
             <input type="text" id="searchInput" placeholder="YYYY-MM-DD">
             <button onclick="performSearch()">Pesquisar</button>
-          </div>
+        </div>
         <div id="content3"></div>
-
-
 
 
         <div id="filter-container">
             <label for="categorySelect">Escolha uma categoria:</label>
             <select id="categorySelect">
-              <option value="all">Todas</option>
-              <option value="sun">sun</option>
-              <option value="galaxy">galaxy</option>
-              <option value="moon">moon</option>
-              <option value="moon">eclipse</option>
-              <option value="spacecraft">spacecraft</option>
-              <!-- Adicione outras opções de categorias conforme necessário -->
+                <option value="all">Todas</option>
+                <option value="sun">sun</option>
+                <option value="galaxy">galaxy</option>
+                <option value="moon">moon</option>
+                <option value="moon">eclipse</option>
+                <option value="spacecraft">spacecraft</option>
+                <!-- Adicione outras opções de categorias conforme necessário -->
             </select>
             <button onclick="performSearch2()">Filtrar</button>
-          </div>
-          <div id="content3"></div>
-        <div id="content4">
-           <p>contudo das categorias aqui</p> 
         </div>
+        <div id="content3"></div>
+        <div id="content4">
+            <p>contudo das categorias aqui</p>
+        </div>
+
+        <div id="content5">
+        </div>
+
 
 
     </main>
     <script src="script.js"></script>
-
+    <script src="tudo.js"></script>
 </body>
 
 </html>
