@@ -1,8 +1,4 @@
-
-//Apenas um elemento
-//APOD API
-
-//APOD Imagens do dia random desde 1995
+/*---------------APOD Imagens do dia random desde 1995 para o header--------------------------*/
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
     const apiUrl = 'https://api.nasa.gov/planetary/apod'; //APOD astronomy picture of the day
@@ -37,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/*Mostra a imagem do dia*/
+/*-----------------------------IMAGEM DO DIA--------------------------------*/
 
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
@@ -51,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             // Update the HTML content with NASA API data
-            const contentDiv2 = document.getElementById('content2');
+            const contentDiv2 = document.getElementById('apod');
             contentDiv2.innerHTML = `
                 <h2>${data.title}</h2>
                 <p>${data.date}</p>
@@ -64,15 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-
+/*-------------------------------------------------------------------------------------*/
 /*Repositório de todas as imagens sugeridad pela nasa onde se pode consultar as antigas e os temas das mesmas */
 
-/*Pesquisa por data */
+/*----------------------------Pesquisa por data------------------------------------------------------ */
 const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
 const apiUrl = 'https://api.nasa.gov/planetary/apod';
 
 document.addEventListener('DOMContentLoaded', function () {
-    performSearch(); // Exibir resultados ao carregar a página
+   // performSearch(); // Exibir resultados ao carregar a página
 });
 
 function performSearch() {
@@ -94,6 +90,7 @@ function performSearch() {
             <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
               <h3>${title}</h3>
               <img src="${imageUrl}" alt="${title}">
+              <p>${data.explanation}</p>
             </div>
           `;
             } else {

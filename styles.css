@@ -7,7 +7,9 @@
 
     --azul_escuro: #000320;
     --azul_claro: #6A74CB;
+    --azul_claro2: #D8DBF5;
     --claro: #F4F5FF;
+
 
     font-family: 'Manrope', sans-serif;
 }
@@ -38,6 +40,46 @@ main{
     width:70%;
     height:auto;
 }
+nav{
+    position: fixed;
+    width:100%;
+}
+.menu{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -5vh;
+    right: 3vw;
+}
+.menulist {
+    display: flex;
+    gap: 4%;
+    list-style-type: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 2%;
+    justify-content: flex-end;
+}
+
+.menulist li a {
+    text-decoration: none;
+}
+
+.logo{
+    width: 15%;
+    position: relative;
+    left:5vw;
+    top: 4.2vh;
+}
+
+hr{
+   color: var(--claro);
+    width:90%;
+    margin: 0 auto;
+    position: relative;
+    top: -5vh;
+}
+
 #content {
     max-width: 800px;
     margin: 20px auto;
