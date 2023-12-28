@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random APOD Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .apod-image {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random APOD Images</h1>
+    <button onclick="applyCategoryFilter('Stars')">Stars</button>
+    <button onclick="applyCategoryFilter('Galaxies')">Galaxies</button>
+    <button onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
+    <button onclick="applyCategoryFilter('Comet')">Comet</button>
+    <button onclick="applyCategoryFilter('Sun')">Sun</button>
+    <button onclick="resetFilter()">Reset Filter</button>
+    <div id="apod-container"></div>
+
+    <script>
+        // Variáveis globais
+        const apodApiUrl = 'https://api.nasa.gov/planetary/apod';
+        const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U'; // Substitua pelo seu próprio chave de API
+        const numImages = 30;
+        const apodContainer = document.getElementById('apod-container');
+        let allApodImages = [];
+
+        // Função para buscar uma imagem APOD aleatória
+        async function getRandomApodImage() {
+            const date = randomDate();
+            const apiUrl = `${apodApiUrl}?api_key=${apiKey}&date=${date}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro ao buscar imagem APOD:', error);
+            }
+        }
+
+        // Função para gerar uma data aleatória dentro de um intervalo
+        function randomDate() {
+            const start = new Date('1995-06-16');  // APOD começou nesta data
+            const end = new Date();
+            const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+            return randomDate.toISOString().split('T')[0];  // Formato YYYY-MM-DD
+        }
+
+        // Função para renderizar imagens APOD
+        function renderApodImages(images) {
+            apodContainer.innerHTML = '';
+            images.forEach(renderApodImage);
+        }
+
+        // Função para renderizar uma única imagem APOD
+        function renderApodImage(apodData) {
+            const { title, date, explanation, url } = apodData;
+            const apodImageHTML = `
+                <div class="apod-image">
+                    <h3>${title}</h3>
+                    <p>Date: ${date}</p>
+                    <img src="${url}" alt="${title}" style="max-width: 100%;">
+                    <p>${explanation}</p>
+                </div>
+            `;
+            apodContainer.innerHTML += apodImageHTML;
+        }
+
+        // Função para aplicar o filtro com base na categoria
+        function applyCategoryFilter(category) {
+            const filteredImages = allApodImages.filter(apod => {
+                const titleLower = apod.title.toLowerCase();
+                const explanationLower = apod.explanation.toLowerCase();
+                return titleLower.includes(category.toLowerCase()) || explanationLower.includes(category.toLowerCase());
+            });
+
+            renderApodImages(filteredImages);
+        }
+
+        // Função para redefinir o filtro e exibir todas as imagens
+        function resetFilter() {
+            renderApodImages(allApodImages);
+        }
+
+        // Função para inicializar a renderização de imagens APOD
+        async function initializeApodImages() {
+            for (let i = 0; i < numImages; i++) {
+                const apodData = await getRandomApodImage();
+                allApodImages.push(apodData);
+            }
+
+            renderApodImages(allApodImages);
+        }
+
+        // Aguarde o carregamento do DOM antes de inicializar
+        document.addEventListener('DOMContentLoaded', initializeApodImages);
+    </script>
+</body>
+</html>

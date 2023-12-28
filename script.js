@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${data.url}" alt="${data.title}" style="max-width: 100%;">
                 <p>${data.explanation}</p>
                 <h2>${data.copyright}</h2>
+                <h2>${data.concept_tags}</h2>
             `;
         })
         .catch(error => {
@@ -43,10 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const today = new Date().toISOString().split('T')[0];
 
     // Make a request to the NASA API with the current date
+    /*Request url*/
     fetch(`${apiUrl}?api_key=${apiKey}&date=${today}`)
         .then(response => response.json())
         .then(data => {
             // Update the HTML content with NASA API data
+            /*Returned fields*/
             const contentDiv2 = document.getElementById('apod');
             contentDiv2.innerHTML = `
                 <h2>${data.title}</h2>
@@ -103,91 +106,8 @@ function performSearch() {
 }
 
 
-
-
-
-
-
-
-
-
+/*------------------------------------------------Categorias------------------------------------------------ */
 /*
-
-document.addEventListener('DOMContentLoaded', function () {
-    const categorySelect = document.getElementById('categorySelect');
-    categorySelect.addEventListener('change', performSearch2);
-
-    console.log('Page loaded');
-});
-
-function performSearch2() {
-    const categorySelect = document.getElementById('categorySelect');
-    const selectedCategory = categorySelect.value;
-
-    console.log(`Performing search for category: ${selectedCategory}`);
-
-    let searchUrl = `${apiUrl}?api_key=${apiKey}`;
-
-    fetch(searchUrl)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Search results:', data);
-
-            const contentDiv4 = document.getElementById('content4');
-            contentDiv4.innerHTML = '';
-
-            // Check if the response is an array of items
-            if (Array.isArray(data)) {
-                // Iterate over each item in the response, limit to 3 items
-                for (let i = 0; i < Math.min(3, data.length); i++) {
-                    const item = data[i];
-                    const imageUrl = item.url;
-                    const title = item.title;
-                    const description = item.explanation;
-
-                    // Check if the title or description includes the desired category
-                    if (
-                        selectedCategory === 'all' ||
-                        title.toLowerCase().includes(selectedCategory.toLowerCase()) ||
-                        description.toLowerCase().includes(selectedCategory.toLowerCase())
-                    ) {
-                        contentDiv4.innerHTML += `
-                            <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
-                                <h3>${title}</h3>
-                                <img src="${imageUrl}" alt="${title}">
-                            </div>
-                        `;
-                    }
-                }
-            } else {
-                // The response is a single item
-                const imageUrl = data.url;
-                const title = data.title;
-                const description = data.explanation;
-
-                // Check if the title or description includes the desired category
-                if (
-                    selectedCategory === 'all' ||
-                    title.toLowerCase().includes(selectedCategory.toLowerCase()) ||
-                    description.toLowerCase().includes(selectedCategory.toLowerCase())
-                ) {
-                    contentDiv4.innerHTML += `
-                        <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
-                            <h3>${title}</h3>
-                            <img src="${imageUrl}" alt="${title}">
-                            <p>${data.explanation}</p>
-                        </div>
-                    `;
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-
-    console.log('Performing search for category:', selectedCategory);
-}*/
-
 document.addEventListener('DOMContentLoaded', function () {
     const categorySelect = document.getElementById('categorySelect');
     categorySelect.addEventListener('change', performSearch2);
@@ -258,5 +178,156 @@ function containsKeyword(data, keyword) {
     const descriptionContainsKeyword = data.explanation.toLowerCase().includes(keyword.toLowerCase());
 
     return titleContainsKeyword || descriptionContainsKeyword;
+}*/
+
+
+
+/*
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Page loaded');
+});
+
+function performSearch2(category) {
+    // Obtém a data atual
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    // Gera uma data aleatória desde 1995 até a data atual
+    const randomYear = Math.floor(Math.random() * (currentYear - 1995 + 1)) + 1995;
+    const randomMonth = Math.floor(Math.random() * 12) + 1;
+    const randomDay = Math.floor(Math.random() * 28) + 1; // Considerando o máximo de 28 dias em um mês
+
+    const randomDate = new Date(`${randomYear}-${randomMonth}-${randomDay}`);
+
+    // Formata a data no formato YYYY-MM-DD
+    const formattedDate = formatDate(randomDate);
+
+    // Realiza a pesquisa para a data aleatória e categoria selecionada
+    let searchUrl = `${apiUrl}?api_key=${apiKey}&date=${formattedDate}&concept_tags=${category}`;
+    fetch(searchUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Search results:', data);
+
+            const contentDiv4 = document.getElementById('content4');
+            contentDiv4.innerHTML = '';
+
+            // Verifique se a resposta é um array de itens
+            if (Array.isArray(data)) {
+                // Itera sobre cada item na resposta
+                data.forEach(item => {
+                    const imageUrl = item.url;
+                    const title = item.title;
+
+                    contentDiv4.innerHTML += `
+                        <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
+                            <h3>${title}</h3>
+                            <img src="${imageUrl}" alt="${title}">
+                            <p>${item.explanation}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                // A resposta é um único item
+                const imageUrl = data.url;
+                const title = data.title;
+
+                contentDiv4.innerHTML += `
+                    <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
+                        <h3>${title}</h3>
+                        <img src="${imageUrl}" alt="${title}">
+                        <p>${data.explanation}</p>
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    console.log('Performing search for category:', category);
 }
 
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Page loaded');
+});
+
+function performSearch2(category) {
+    // Obtém a data atual
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    // Gera uma data aleatória desde 1995 até a data atual
+    const randomYear = Math.floor(Math.random() * (currentYear - 1995 + 1)) + 1995;
+    const randomMonth = Math.floor(Math.random() * 12) + 1;
+    const randomDay = Math.floor(Math.random() * 28) + 1; // Considerando o máximo de 28 dias em um mês
+
+    const randomDate = new Date(`${randomYear}-${randomMonth}-${randomDay}`);
+
+    // Formata a data no formato YYYY-MM-DD
+    const formattedDate = formatDate(randomDate);
+
+    const category = ["Stars", "Galaxies", "Nebulae", "Comet", "Sun",
+        "Mercury", "Earth", "Moon", "Mars", "Jupiter", "Saturn", "Uranus", "Neptunae", "Pluto", "Rockets", "Spacecraft", "Space Station", "Scientists", "Astronauts"
+    ]; 
+
+    // Realiza a pesquisa para a data aleatória e categoria selecionada
+    let searchUrl = `${apiUrl}?api_key=${apiKey}&date=${formattedDate}&concept_tags=${category}`;
+    fetch(searchUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Search results:', data);
+
+            const contentDiv4 = document.getElementById('content4');
+            contentDiv4.innerHTML = '';
+
+            // Verifique se a resposta é um array de itens
+            if (Array.isArray(data)) {
+                // Itera sobre cada item na resposta
+                data.forEach(item => {
+                    const imageUrl = item.url;
+                    const title = item.title;
+
+                    contentDiv4.innerHTML += `
+                        <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
+                            <h3>${title}</h3>
+                            <img src="${imageUrl}" alt="${title}">
+                            <p>${item.explanation}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                // A resposta é um único item
+                const imageUrl = data.url;
+                const title = data.title;
+
+                contentDiv4.innerHTML += `
+                    <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
+                        <h3>${title}</h3>
+                        <img src="${imageUrl}" alt="${title}">
+                        <p>${data.explanation}</p>
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    console.log('Performing search for category:', category);
+}
+
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}

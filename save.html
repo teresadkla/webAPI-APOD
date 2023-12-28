@@ -1,0 +1,61 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // API endpoint for APOD
+    const apodApiUrl = 'https://api.nasa.gov/planetary/apod';
+
+    // API key (replace 'YOUR_API_KEY' with your actual API key)
+    const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
+
+    // Number of random images to fetch
+    const numImages = 30;
+
+    // Container to hold APOD images
+    const apodContainer = document.getElementById('apod-container');
+
+    // Function to fetch a random APOD image
+    async function getRandomApodImage() {
+        const date = randomDate();
+        const apiUrl = `${apodApiUrl}?api_key=${apiKey}&date=${date}`;
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching APOD image:', error);
+        }
+    }
+
+    // Function to generate a random date within a range
+    function randomDate() {
+        const start = new Date('1995-06-16');  // APOD started on this date
+        const end = new Date();
+        const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+        return randomDate.toISOString().split('T')[0];  // Format as YYYY-MM-DD
+    }
+
+    // Function to render APOD images
+    async function renderApodImages() {
+        for (let i = 0; i < numImages; i++) {
+            const apodData = await getRandomApodImage();
+            renderApodImage(apodData);
+        }
+    }
+
+    // Function to render a single APOD image
+    function renderApodImage(apodData) {
+        const { title, date, explanation, url } = apodData;
+        const apodImageHTML = `
+            <div class="apod-image">
+                <h3>${title}</h3>
+                <p>Date: ${date}</p>
+                <img src="${url}" alt="${title}" style="max-width: 100%;">
+                <p>${explanation}</p>
+            </div>
+        `;
+        apodContainer.innerHTML += apodImageHTML;
+    }
+
+    // Initialize the rendering of APOD images
+    renderApodImages();
+});
+</script>
