@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link href="styles.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
+
+    <!--para as fontes-->
+    <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+    <!--  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Secular+One&display=swap"
+          rel="stylesheet">-->
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <div class="logo2">
+                <img class="logo" src="conteudo/NasaDiscovery.svg" alt="logo website">
+            </div>
+            <div class="menu">
+                <ul class="menulist">
+                    <li>
+                        <a href="#APOD">
+                            <h4>Image of the day</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Latest">
+                            <h4>Latest 3</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Search">
+                            <h4>Search</h4>
+                        </a>
+                    </li>
+                    <li><a href="#Discover">
+                            <h4>Discover</h4>
+                        </a></li>
+                </ul>
+            </div>
+            <hr />
+        </nav>
+    </header>
+    <main>
+        <div id="content">
+            <!-- Uma imagem random para o header-->
+            <div id="content"> </div>
+           
+        </div>
+
+        <div id="APOD">
+            <h2>Image of the day</h2>
+            <!--Imagem do dia-->
+            <div id="contentapod"></div>
+            
+        </div>
+
+        <div id="Latest">
+            <h2>Latest 3 images</h2>
+            <!--Last 3 images-->
+        </div>
+
+        <div id="Search">
+            <h2>Search a date</h2>
+            <div id="search-container">
+                <input type="text" id="searchInput" placeholder="YYYY-MM-DD">
+                <button onclick="performSearch()">Pesquisar</button>
+            </div>
+            <div id="content3"></div>
+        </div>
+
+        <div id="Discover">
+            <h2>Discover</h2>
+            <div id="discover-filter">
+                <div id="filters">
+
+                    <button id="stars" class="category-btn" value="Stars"
+                        onclick="performSearch2('Stars')">Stars</button>
+                    <button id="galaxy" class="category-btn" value="Galaxies"
+                        onclick="performSearch2('Galaxies')">Galaxies</button>
+                    <button id="nebul" class="category-btn" value="Nebulae"
+                        onclick="performSearch2('Nebulae')">Nebulae</button>
+                    <button id="comet" class="category-btn" value="Comet"
+                        onclick="performSearch2('Comet')">Comet</button>
+
+
+                    <select class="category" id="categorySelect" onchange="this.form.performSearch2();">
+                        <option value="all">Solar System</option>
+                        <option value="Sun">Sun</option>
+                        <option value="Mercury">Mercury</option>
+                        <option value="Earth">Earth</option>
+                        <option value="Moon">Moon</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Jupiter">Jupiter</option>
+                        <option value="Saturn">Saturn</option>
+                        <option value="Uranus">Uranus</option>
+                        <option value="Neptunae">Neptunae</option>
+                        <option value="Pluto">PLuto</option>
+                    </select>
+                    <!-- <button onclick="performSearch2()">GO</button>-->
+
+                    <select class="category" id="categorySelect2" onchange="this.form.performSearch2();">
+                        <option value="all">Space Tech</option>
+                        <option value="Rockets">Rockets</option>
+                        <option value="Spacecraft">Spacecraft</option>
+                        <option value="Space Stations">Space Stations</option>
+                    </select>
+                    <!-- <button onclick="performSearch2()">GO</button>-->
+
+                    <select class="category" id="categorySelect3" onchange="this.form.performSearch2();">
+                        <option value="all">People</option>
+                        <option value="Scientists">Scientists</option>
+                        <option value="Astronauts">Astronauts</option>
+                    </select>
+                    <!-- <button onclick="performSearch2()">GO</button>-->
+
+                </div>
+            </div>
+        </div>
+
+        <div id="content3"></div>
+
+        <div id="content4">
+
+        </div>
+
+        <div id="content5">
+        </div>
+
+
+
+    </main>
+    <script src="script.js"></script>
+    <script src="tudo.js"></script>
+</body>
+
+</html>
