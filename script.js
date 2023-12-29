@@ -32,7 +32,7 @@
 });
 
 */
-
+/*---------IMAGEM RANDOM DESDE 1995 PARA O HEADER-------------------- */
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
     const apiUrl = 'https://api.nasa.gov/planetary/apod'; //APOD astronomy picture of the day
@@ -62,13 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error fetching data:', error);
         });
 });
-
-
-
-
-
-
-
 
 
 
@@ -105,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /*-------------------------------------------------------------------------------------*/
 /*Repositório de todas as imagens sugeridad pela nasa onde se pode consultar as antigas e os temas das mesmas */
 
-/*----------------------------Pesquisa por data------------------------------------------------------ */
+/*----------------------------PESQUISA DO DIA------------------------------------------------------ */
 const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
 const apiUrl = 'https://api.nasa.gov/planetary/apod';
 

@@ -200,14 +200,15 @@ hr {
     height: fit-content;
 }
 .image2Apod{
-    grid-column: 6 / span 6;
-    grid-row: 1/ span 1;
+    grid-column: 6 / span 5;
+   /* grid-row: 1/ span 1;*/
     height: fit-content;
+    border-radius: 10px;
 
     
 }
 .apod-explanation{
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 5;
     grid-row: 3/ span 1;
     height: fit-content;
 }
