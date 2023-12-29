@@ -18,6 +18,9 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: var(--claro);
+    font-family: Manrope, sans-serif;
+  
 
 }
 
@@ -27,30 +30,32 @@ header {
     overflow: hidden;
 }
 
-h1 {
-}
+h1 {}
 
-h4{
+h4 {
     color: var(--claro);
 }
-body {
-    font-family: Manrope, sans-serif;
+
+
+
+main {
+    width: 70%;
+    height: auto;
 }
-main{
-    width:70%;
-    height:auto;
-}
-nav{
+
+nav {
     position: fixed;
-    width:100%;
+    width: 100%;
 }
-.menu{
+
+.menu {
     display: flex;
     justify-content: flex-end;
     position: relative;
     top: -5vh;
     right: 3vw;
 }
+
 .menulist {
     display: flex;
     gap: 4%;
@@ -65,16 +70,16 @@ nav{
     text-decoration: none;
 }
 
-.logo{
+.logo {
     width: 15%;
     position: relative;
-    left:5vw;
+    left: 5vw;
     top: 4.2vh;
 }
 
-hr{
-   color: var(--claro);
-    width:90%;
+hr {
+    color: var(--claro);
+    width: 90%;
     margin: 0 auto;
     position: relative;
     top: -5vh;
@@ -86,4 +91,75 @@ hr{
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.category-btn {
+    background-color: var(--claro);
+    height: 5vh;
+    /*width: 20%;
+   width: fit-content; */
+    width: 80px;
+    border-radius: 50px;
+    stroke: var(--azul_escuro);
+    color: var(--azul_escuro);
+    font-weight: 600;
+   
+
+}
+.category {
+    background-color: var(--claro);
+    height: 5vh;
+    /*width: 20%;*/
+    width: fit-content;
+    border-radius: 50px;
+    stroke: var(--azul_escuro);
+    color: var(--azul_escuro);
+    font-weight: 600;
+
+
+}
+
+#discover-filter{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    width: 100vw;
+}
+#filters{
+    display: grid;
+    gap: 10px;
+    padding: 2%;
+    grid-template-columns: repeat(8 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: fit-content;
+   
+}
+#stars{
+    grid-column: 1 / span 2;
+    grid-row: 1/ span 1;
+}
+#galaxy{
+    grid-column: 3 / span 2;
+    grid-row: 1/ span 1;
+}
+#nebul{
+    grid-column: 5 / span 2;
+    grid-row: 1/ span 1;
+}
+#comet{
+    grid-column: 7 / span 2;
+    grid-row: 1/ span 1;
+}
+
+#categorySelect{
+    grid-column: 1 / span 3;
+    grid-row: 2/ span 1;
+}
+#categorySelect2{
+    grid-column: 4/ span 3;
+    grid-row: 2/ span 1;
+}
+#categorySelect3{
+    grid-column:7/ span 3;
+    grid-row: 2/ span 1;
 }
