@@ -1,5 +1,5 @@
 /*---------------APOD Imagens do dia random desde 1995 para o header--------------------------*/
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
     const apiUrl = 'https://api.nasa.gov/planetary/apod'; //APOD astronomy picture of the day
 
@@ -24,14 +24,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>${data.date}</p>
                 <img src="${data.url}" alt="${data.title}" style="max-width: 100%;">
                 <p>${data.explanation}</p>
-                <h2>${data.copyright}</h2>
-                <h2>${data.concept_tags}</h2>
             `;
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 });
+
+*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
+    const apiUrl = 'https://api.nasa.gov/planetary/apod'; //APOD astronomy picture of the day
+
+    // Function to generate a random date in the YYYY-MM-DD format
+    function getRandomDate() {
+        const start = new Date('1995-06-16'); // APOD API start date
+        const end = new Date(); // Today's date
+        const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+        return randomDate.toISOString().split('T')[0]; // Extract YYYY-MM-DD
+    }
+
+    const randomDate = getRandomDate();
+
+    // Make a request to the NASA API with the random date
+    fetch(`${apiUrl}?api_key=${apiKey}&date=${randomDate}`)
+        .then(response => response.json())
+        .then(data => {
+            // Update the HTML content with NASA API data
+            const contentDiv = document.getElementById('headerimg');
+            contentDiv.innerHTML = `
+             <img src="${data.url}" alt="${data.title}" style="max-width: 100%;" class="apod-image">
+       
+            `;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+
+
+
+
+
+
+
+
+
 
 
 /*-----------------------------IMAGEM DO DIA--------------------------------*/
@@ -52,10 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
             /*Returned fields*/
             const contentDiv2 = document.getElementById('contentapod');
             contentDiv2.innerHTML = `
-                <h2>${data.title}</h2>
-                <p>${data.date}</p>
-                <img src="${data.url}" alt="${data.title}" style="max-width: 100%;">
-                <p>${data.explanation}</p>
+                <h2 class="apod-title">${data.title}  </h2>
+                <p class="apod-date">${data.date}</p>
+                <img src="${data.url}" alt="${data.title}" style="max-width: 100%;"  class="image2Apod">
+                <p class="apod-explanation">${data.explanation}</p>
             `;
         })
         .catch(error => {
@@ -71,7 +110,7 @@ const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
 const apiUrl = 'https://api.nasa.gov/planetary/apod';
 
 document.addEventListener('DOMContentLoaded', function () {
-   // performSearch(); // Exibir resultados ao carregar a página
+    // performSearch(); // Exibir resultados ao carregar a página
 });
 
 function performSearch() {
