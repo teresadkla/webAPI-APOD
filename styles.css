@@ -45,8 +45,14 @@ h3 {
 
 h4 {
     color: var(--claro);
+    transition: color 0.3s ease;
 }
-
+.cor-no-scroll {
+    color: var(--azul_escuro); 
+}
+h4:hover{
+    color: var(--azul_claro); 
+}
 main {
     /*  width: 70%;*/
     height: auto;
@@ -57,6 +63,7 @@ main {
 nav {
     position: fixed;
     width: 100%;
+    /*background-color: rgba(0, 3, 32, 0.8);*/
 }
 
 .menu {
@@ -89,6 +96,7 @@ nav {
 }
 
 hr {
+    transition: opacity 0.3s ease;
     color: var(--claro);
     width: 90%;
     margin: 0 auto;
@@ -166,11 +174,23 @@ hr {
 
 /*--------------------------------CATEGORIAS---------------------------------------*/
 
+#orderBy {
+    background-color: var(--azul_claro2);
+    height: 7vh;
+    border-radius: 50px;
+    border: 2px solid var(--azul_claro);
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--azul_claro);
+}
+label {
+    color: var(--azul_claro);
+    font-weight: 600;
+    font-size:0.8rem 
+}
 .category-btn {
     background-color: var(--claro);
-    height: 5vh;
-    /*width: 20%;
-   width: fit-content; */
+    height: 7vh;
     width: 80px;
     border-radius: 50px;
     border: 2px solid var(--azul_escuro);
@@ -186,7 +206,7 @@ hr {
 
 .category {
     background-color: var(--claro);
-    height: 5vh;
+    height: 7vh;
     /*width: 20%;*/
     width: fit-content;
     border-radius: 50px;
@@ -206,12 +226,6 @@ hr {
 }
 
 #filters {
-    /*display: grid;
-    gap: 10px;
-    padding: 2%;
-    grid-template-columns: repeat(8 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    width: fit-content;*/
     display: flex;
     gap: 10px;
     padding: 2%;

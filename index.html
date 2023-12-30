@@ -153,13 +153,14 @@
                         <option value="Scientists">Scientists</option>
                         <option value="Astronauts">Astronauts</option>
                     </select>
-
-                    <label for="orderBy">Order By:</label>
-                    <select id="orderBy" onchange="applyOrderBy(this.value);">
-                        <option value="random">Random</option>
-                        <option value="latest">Most recent to old</option>
-                        <option value="oldest">Oldest to most recent</option>
-                    </select>
+                    <div id="ordena">
+                        <label for="orderBy">Order By: </label>
+                        <select id="orderBy" onchange="applyOrderBy(this.value);">
+                            <option value="random">Random</option>
+                            <option value="latest">Most recent to old</option>
+                            <option value="oldest">Oldest to most recent</option>
+                        </select>
+                    </div>
                     <button onclick="resetFilter()">Clean</button>
                 </div>
             </div>
