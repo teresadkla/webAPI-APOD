@@ -115,7 +115,7 @@ hr {
     display: grid;
     gap: 10px;
     padding: 7%;
-    background-color: #6A74CB;
+    /*background-color: #6A74CB;*/
     grid-template-columns: repeat(12, 1fr);
     /*grid-template-rows: repeat(6, 1fr);*/
     width: 100vw;
@@ -291,4 +291,46 @@ hr {
     grid-row: 1/ span 4;
     height: fit-content;
     cursor: pointer;
+}
+/*--------------------------------SEARCH APOD-------------------------------*/
+#displayresult {
+    display: grid;
+    background-color: var(--azul_claro2);
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 4%;
+    justify-content: center;
+    justify-items: start;
+    margin-left: 40%;
+}
+.searchtitle {
+    grid-column: 2/ span 10;
+    grid-row: 1/ span 1;
+    height: fit-content;
+}
+.searchdate {
+    grid-column: 2/ span 10;
+    grid-row: 2/ span 1;
+    height: fit-content;
+}
+.containersearchIMG {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    grid-column: 5 / span 2;
+    grid-row: 3 /span 1;
+}
+img.searchimg {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    /* margin: 4%; */
+}
+p.searchexplanation {
+    grid-column: 2/ span 8;
+    grid-row: 6/ span 1;
+    height: fit-content;
 }
