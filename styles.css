@@ -212,3 +212,67 @@ hr {
     grid-row: 3/ span 1;
     height: fit-content;
 }
+
+.discoverapodlist {
+    /*
+    background-color: var(--azul_claro2);
+    display: block;
+    padding: 2%;
+    gap: 10px;
+    margin: 7%;
+    border-radius: 5px;
+    width: 100%;*/
+    background-color: var(--azul_claro2);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 2%;
+    gap: 10px;
+    margin: 7%;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.imgdiscover-container {
+    /*
+    width: 150px;
+    height: 150px;
+    object-fit: cover;*/
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    grid-column: 1 / span 2;
+    /* grid-row: 1/ span 1; */
+    
+}
+.imagediscoverlist{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    margin: 4%;
+}
+.titlediscoverlist {
+    grid-column: 4/ span 10;
+    grid-row: 1/ span 1;
+    height: fit-content;
+}
+
+.datediscoverlist {
+    grid-column: 4 / span 4;
+    grid-row: 1/ span 1;
+    height: fit-content;
+    margin-top: 14%;
+}
+.explanation-disc {
+    grid-column: 4 / span 10;
+    grid-row: 1/ span 4;
+    height: fit-content;
+    margin-top: 17%;
+}
+.seemore {
+    all: unset;
+    grid-column: 12 / span 5;
+    grid-row: 1/ span 4;
+    height: fit-content;
+    cursor: pointer;
+}
