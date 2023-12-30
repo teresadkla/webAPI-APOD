@@ -187,7 +187,7 @@ hr {
 }
 #orderBy {
     background-color: var(--claro);
-    height: 25%;
+    height:7vh;
     border-radius: 50px;
     border: 2px solid var(--azul_claro);
     font-weight: 600;
@@ -201,7 +201,7 @@ label {
 }
 .category-btn {
     background-color: var(--claro);
-    height: 25%;
+    height: 7vh;
     width: 80px;
     border-radius: 50px;
     border: 2px solid var(--azul_escuro);
@@ -220,7 +220,7 @@ label {
 }
 .category {
     background-color: var(--claro);
-    height: 25%;
+    height: 7vh;
     width: fit-content;
     border-radius: 50px;
     border: 2px solid var(--azul_escuro);
@@ -233,7 +233,7 @@ label {
 .category:hover {
     background-color: var(--azul_claro);
     color: var(--claro);
-}
+}*/
 #discover-filter {
     display: flex;
     justify-content: center;
