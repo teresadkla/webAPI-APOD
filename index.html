@@ -60,6 +60,7 @@
         <!---------------------Last 3 images------------------------->
         <div id="Latest">
             <h2>Latest 3 images</h2>
+            <div id="contentLatest3"></div>
         </div>
 
         <!---------------------Search date------------------------->
@@ -79,11 +80,11 @@
             <div id="discover-filter">
                 <div id="filters">
 
-                    <button onclick="applyCategoryFilter('Stars')">Stars</button>
-                    <button onclick="applyCategoryFilter('Galaxies')">Galaxies</button>
-                    <button onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
-                    <button onclick="applyCategoryFilter('Comet')">Comet</button>
-                    <button onclick="applyCategoryFilter('Sun')">Sun</button>
+                    <button class="category-btn" id="stars" onclick="applyCategoryFilter('Stars')">Stars</button>
+                    <button class="category-btn" id="galaxy" onclick="applyCategoryFilter('Galaxies')">Galaxies</button>
+                    <button class="category-btn" id="nebul" onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
+                    <button class="category-btn" id="comet" onclick="applyCategoryFilter('Comet')">Comet</button>
+                    <button class="category-btn" id="stars" onclick="applyCategoryFilter('Sun')">Sun</button>
 
                     <select class="category" id="categorySelect" onchange="applyCategoryFilter(this.value);">
                         <option value="all">Solar System</option>
@@ -118,26 +119,15 @@
                         <option value="latest">Most recent to old</option>
                         <option value="oldest">Oldest to most recent</option>
                     </select>
-
-                    <button onclick="resetFilter()">Reset Filter</button>
+                    <button onclick="resetFilter()">Clean</button>
                 </div>
             </div>
             <div id="apod-container"></div>
         </div>
 
-        <!--<div id="content3"></div>
-
-        <div id="content4">
-
-        </div>
-
-        <div id="content5">
-        </div>-->
-
-
-
-    </main>
+        </main>
     <script src="script.js"></script>
 </body>
 
+    
 </html>

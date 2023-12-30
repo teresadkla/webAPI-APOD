@@ -1,3 +1,4 @@
+/*--------------------------------GERAL---------------------------------------*/
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +21,11 @@ body {
     overflow-x: hidden;
     background-color: var(--claro);
     font-family: Manrope, sans-serif;
-  
+
 
 }
 
-header{
+header {
     background-color: var(--azul_escuro);
     height: 100vh;
     overflow: hidden;
@@ -40,6 +41,8 @@ main {
     width: 70%;
     height: auto;
 }
+
+/*--------------------------------BARRA DE NAVEGAÇÃO---------------------------------------*/
 
 nav {
     position: fixed;
@@ -83,7 +86,9 @@ hr {
     top: -5vh;
 }
 
-#headerimg{
+/*--------------------------------HEADER IMG---------------------------------------*/
+
+#headerimg {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -92,7 +97,7 @@ hr {
 .apod-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 /* #content {
@@ -102,6 +107,62 @@ hr {
     border: 1px solid #ccc;
     border-radius: 5px;
 } */
+
+
+/*--------------------------------IMAGE OF THE DAY APOD---------------------------------------*/
+
+#contentapod {
+    display: grid;
+    gap: 10px;
+    padding: 7%;
+   /* background-color: #6A74CB;*/
+    grid-template-columns: repeat(12, 1fr);
+    /* grid-template-rows: repeat(6, 1fr); */
+    width: 100vw;
+    height: 100%;
+}
+
+.apod-title {
+    grid-column: 1 / span 6;
+    grid-row: 1/ span 1;
+    height: fit-content;
+}
+
+.apod-date {
+    grid-column: 1 / span 6;
+    grid-row: 2/ span 1;
+    height: fit-content;
+}
+
+.containerAPODimg {
+    grid-column: 6 / span 5;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    margin-left: 35%;
+    margin-top: -10%;
+}
+.image2Apod {
+    grid-column: 6 / span 5;
+    height: fit-content;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+
+
+.apod-explanation {
+    grid-column: 1 / span 5;
+    grid-row: 3/ span 1;
+    height: fit-content;
+}
+
+
+
+/*--------------------------------CATEGORIAS---------------------------------------*/
 
 .category-btn {
     background-color: var(--claro);
@@ -113,8 +174,12 @@ hr {
     stroke: var(--azul_escuro);
     color: var(--azul_escuro);
     font-weight: 600;
-   
+    cursor: pointer;
+}
 
+.category-btn:active {
+    background-color: var(--azul_claro); 
+    color: var(--claro); 
 }
 .category {
     background-color: var(--claro);
@@ -125,103 +190,80 @@ hr {
     stroke: var(--azul_escuro);
     color: var(--azul_escuro);
     font-weight: 600;
+    cursor: pointer;
 
 
 }
 
-#discover-filter{
+#discover-filter {
     display: flex;
     justify-content: center;
     margin: 0;
     width: 100vw;
 }
-#filters{
-    display: grid;
+
+#filters {
+    /*display: grid;
+    gap: 10px;
+    padding: 2%;
+    grid-template-columns: repeat(8 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: fit-content;*/
+    display: flex;
     gap: 10px;
     padding: 2%;
     grid-template-columns: repeat(8 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: fit-content;
-   
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
-#stars{
+
+#stars {
     grid-column: 1 / span 2;
     grid-row: 1/ span 1;
 }
-#galaxy{
+
+#galaxy {
     grid-column: 3 / span 2;
     grid-row: 1/ span 1;
 }
-#nebul{
+
+#nebul {
     grid-column: 5 / span 2;
     grid-row: 1/ span 1;
 }
-#comet{
+
+#comet {
     grid-column: 7 / span 2;
     grid-row: 1/ span 1;
 }
 
-#categorySelect{
+#categorySelect {
     grid-column: 1 / span 3;
     grid-row: 2/ span 1;
 }
-#categorySelect2{
+
+#categorySelect2 {
     grid-column: 4/ span 3;
     grid-row: 2/ span 1;
 }
-#categorySelect3{
-    grid-column:7/ span 3;
+
+#categorySelect3 {
+    grid-column: 7/ span 3;
     grid-row: 2/ span 1;
 }
-#size{
-    background-color: brown;
-    width: 250px;
-    height: 250px;
-}
 
-#contentapod{
-    display: grid;
-    gap: 10px;
-    padding: 7%;
-    background-color: #6A74CB;
-    grid-template-columns: repeat(12, 1fr);
-    /*grid-template-rows: repeat(6, 1fr);*/
-    width: 100vw;
-    height: 100%;
-}
-.apod-title{
-    grid-column: 1 / span 6;
-    grid-row: 1/ span 1;
-    height: fit-content;
-}
-.apod-date{
-    grid-column: 1 / span 6;
-    grid-row: 2/ span 1;
-    height: fit-content;
-}
-.image2Apod{
-    grid-column: 6 / span 5;
-   /* grid-row: 1/ span 1;*/
-    height: fit-content;
-    border-radius: 10px;
+/*--------------------------------DISCOVER APOD-------------------------------*/
 
-    
-}
-.apod-explanation{
-    grid-column: 1 / span 5;
-    grid-row: 3/ span 1;
-    height: fit-content;
+#apod-container {
+    width: 100%;
+    margin-left: 15%;
 }
 
 .discoverapodlist {
-    /*
-    background-color: var(--azul_claro2);
-    display: block;
-    padding: 2%;
-    gap: 10px;
-    margin: 7%;
-    border-radius: 5px;
-    width: 100%;*/
     background-color: var(--azul_claro2);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -233,24 +275,20 @@ hr {
 }
 
 .imgdiscover-container {
-    /*
-    width: 150px;
-    height: 150px;
-    object-fit: cover;*/
     width: 200px;
     height: 200px;
     object-fit: cover;
     grid-column: 1 / span 2;
-    /* grid-row: 1/ span 1; */
-    
 }
-.imagediscoverlist{
+
+.imagediscoverlist {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     object-fit: cover;
     margin: 4%;
 }
+
 .titlediscoverlist {
     grid-column: 4/ span 10;
     grid-row: 1/ span 1;
@@ -263,16 +301,60 @@ hr {
     height: fit-content;
     margin-top: 14%;
 }
+
 .explanation-disc {
     grid-column: 4 / span 10;
     grid-row: 1/ span 4;
     height: fit-content;
     margin-top: 17%;
 }
+
 .seemore {
     all: unset;
     grid-column: 12 / span 5;
     grid-row: 1/ span 4;
     height: fit-content;
     cursor: pointer;
+}
+/*--------------------------------SEARCH APOD-------------------------------*/
+#displayresult {
+    display: grid;
+    background-color: var(--azul_claro2);
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 4%;
+    justify-content: center;
+    justify-items: start;
+    margin-left: 40%;
+}
+.searchtitle {
+    grid-column: 2/ span 10;
+    grid-row: 1/ span 1;
+    height: fit-content;
+}
+.searchdate {
+    grid-column: 2/ span 10;
+    grid-row: 2/ span 1;
+    height: fit-content;
+}
+.containersearchIMG {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    grid-column: 5 / span 2;
+    grid-row: 3 /span 1;
+}
+img.searchimg {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    /* margin: 4%; */
+}
+p.searchexplanation {
+    grid-column: 2/ span 8;
+    grid-row: 6/ span 1;
+    height: fit-content;
 }

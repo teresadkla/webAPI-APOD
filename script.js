@@ -63,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 /*-----------------------------IMAGEM DO DIA--------------------------------*/
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -83,9 +81,11 @@ document.addEventListener('DOMContentLoaded', function () {
             /*Returned fields*/
             const contentDiv2 = document.getElementById('contentapod');
             contentDiv2.innerHTML = `
-                <h2 class="apod-title">${data.title}  </h2>
+                <h3 class="apod-title">${data.title}  </h3>
                 <p class="apod-date">${data.date}</p>
+               <div class="containerAPODimg"> 
                 <img src="${data.url}" alt="${data.title}" style="max-width: 100%;"  class="image2Apod">
+                </div>
                 <p class="apod-explanation">${data.explanation}</p>
             `;
         })
@@ -96,6 +96,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /*-------------------------------------------------------------------------------------*/
 /*Repositório de todas as imagens sugeridad pela nasa onde se pode consultar as antigas e os temas das mesmas */
+
+
+/*-----------AS 3 IMAGENS MAIS RECENTES-------------------------------- */
+/*document.addEventListener('DOMContentLoaded', function () {
+    const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
+    const apiUrl = 'https://api.nasa.gov/planetary/apod';
+
+    // Obter a data atual no formato YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0];
+
+    // Obter a imagem do dia
+    fetch(`${apiUrl}?api_key=${apiKey}&date=${today}`)
+        .then(response => response.json())
+        .then(todayApod => {
+            // Exibir a imagem do dia
+            displayApod(todayApod);
+
+            // Calcular as datas dos últimos 3 dias
+            const threeDaysAgo = new Date();
+            threeDaysAgo.setDate(threeDaysAgo.getDate() - 1);
+
+            const twoDaysAgo = new Date();
+            twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+            
+            const threeDaysAgoFormatted = threeDaysAgo.toISOString().split('T')[0];
+            const twoDaysAgoFormatted = twoDaysAgo.toISOString().split('T')[0];
+
+            // Obter as últimas 3 imagens (excluindo a imagem do dia)
+            fetch(`${apiUrl}?api_key=${apiKey}&start_date=${threeDaysAgoFormatted}&end_date=${today}`)
+                .then(response => response.json())
+                .then(lastThreeApods => {
+                    // Filtrar as últimas 3 imagens para excluir a imagem do dia
+                    const filteredLastThreeApods = lastThreeApods.filter(apod => apod.date !== today);
+
+                    // Exibir as últimas 3 imagens
+                    filteredLastThreeApods.forEach(apod => {
+                        displayApod(apod);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching last 3 APODs:', error);
+                });
+        })
+        .catch(error => {
+            console.error('Error fetching today\'s APOD:', error);
+        });
+});
+
+function displayApod(apod) {
+    // Update the HTML content with NASA API data
+    const contentLatest = document.getElementById('contentLatest3');
+    contentLatest.innerHTML += `
+        <h2 class="LatestTitle">${apod.title}  </h2>
+        <p class="LatestDate">${apod.date}</p>
+        <img src="${apod.url}" alt="${apod.title}" style="max-width: 100%;"  class="LastestApod">
+    `;
+}*/
+
+
+
+
+
 
 /*----------------------------PESQUISA DO DIA------------------------------------------------------ */
 
@@ -122,10 +184,14 @@ function performSearch() {
                 const title = data.title;
 
                 contentDiv3.innerHTML += `
-            <div class="item" onclick="showPreview('${imageUrl}', '${title}')">
-              <h3>${title}</h3>
-              <img src="${imageUrl}" alt="${title}">
-              <p>${data.explanation}</p>
+<div id="displayresult">
+              <h3 class="searchtitle">${title}</h3>
+              <p class="searchdate">${data.date}</p>
+              <div class="containersearchIMG">
+              <img class="searchimg" src="${imageUrl}" alt="${title}">
+              </div>
+              <p class="searchexplanation">${data.explanation}</p>
+            </div>
             </div>
           `;
             } else {
@@ -142,7 +208,7 @@ function performSearch() {
 // Variáveis globais
 const apodApiUrl = 'https://api.nasa.gov/planetary/apod';
        /* const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';/ // Substitua pelo seu próprio chave de API
-        */const numImages = 15;
+        */const numImages = 30;
 const apodContainer = document.getElementById('apod-container');
 let allApodImages = [];
 
