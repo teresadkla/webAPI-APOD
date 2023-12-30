@@ -115,9 +115,9 @@ hr {
     display: grid;
     gap: 10px;
     padding: 7%;
-    /*background-color: #6A74CB;*/
+   /* background-color: #6A74CB;*/
     grid-template-columns: repeat(12, 1fr);
-    /*grid-template-rows: repeat(6, 1fr);*/
+    /* grid-template-rows: repeat(6, 1fr); */
     width: 100vw;
     height: 100%;
 }
@@ -134,14 +134,25 @@ hr {
     height: fit-content;
 }
 
+.containerAPODimg {
+    grid-column: 6 / span 5;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    margin-left: 35%;
+    margin-top: -10%;
+}
 .image2Apod {
     grid-column: 6 / span 5;
-    /* grid-row: 1/ span 1;*/
     height: fit-content;
-    border-radius: 10px;
-
-
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
 }
+
+
+
 
 .apod-explanation {
     grid-column: 1 / span 5;
@@ -163,10 +174,13 @@ hr {
     stroke: var(--azul_escuro);
     color: var(--azul_escuro);
     font-weight: 600;
-
-
+    cursor: pointer;
 }
 
+.category-btn:active {
+    background-color: var(--azul_claro); 
+    color: var(--claro); 
+}
 .category {
     background-color: var(--claro);
     height: 5vh;
@@ -176,6 +190,7 @@ hr {
     stroke: var(--azul_escuro);
     color: var(--azul_escuro);
     font-weight: 600;
+    cursor: pointer;
 
 
 }
@@ -188,12 +203,21 @@ hr {
 }
 
 #filters {
-    display: grid;
+    /*display: grid;
+    gap: 10px;
+    padding: 2%;
+    grid-template-columns: repeat(8 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: fit-content;*/
+    display: flex;
     gap: 10px;
     padding: 2%;
     grid-template-columns: repeat(8 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: fit-content;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 
 }
 

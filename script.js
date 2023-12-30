@@ -83,7 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
             contentDiv2.innerHTML = `
                 <h3 class="apod-title">${data.title}  </h3>
                 <p class="apod-date">${data.date}</p>
+               <div class="containerAPODimg"> 
                 <img src="${data.url}" alt="${data.title}" style="max-width: 100%;"  class="image2Apod">
+                </div>
                 <p class="apod-explanation">${data.explanation}</p>
             `;
         })
