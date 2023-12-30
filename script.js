@@ -165,11 +165,14 @@ const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
 const apiUrl = 'https://api.nasa.gov/planetary/apod';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // performSearch(); // Exibir resultados ao carregar a página
+    // Adiciona um event listener ao botão de pesquisa
+    const searchBtn = document.getElementById('search-btn');
+    searchBtn.addEventListener('click', performSearch);
 });
 
 function performSearch() {
-    const searchTerm = document.getElementById('searchInput').value;
+    // Move a obtenção do valor do input para dentro da função performSearch
+    const searchTerm = document.getElementById('input-search').value;
     const searchUrl = `${apiUrl}?api_key=${apiKey}&date=${searchTerm}`;
 
     fetch(searchUrl)
@@ -184,7 +187,7 @@ function performSearch() {
                 const title = data.title;
 
                 contentDiv3.innerHTML += `
-<div id="displayresult">
+              <div id="displayresult">
               <h3 class="searchtitle">${title}</h3>
               <p class="searchdate">${data.date}</p>
               <div class="containersearchIMG">
@@ -202,6 +205,7 @@ function performSearch() {
             console.error('Erro ao obter dados:', error);
         });
 }
+
 
 
 /*------------------DISCOVER APOD E CATEFORIAS---------------------- */
@@ -345,5 +349,27 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', function () {
         menuList.classList.toggle('show');
         menuToggle.classList.toggle('open');
+    });
+
+    const menuLinks = document.querySelectorAll('.menulist a');
+
+    menuLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            // Feche o menu
+            menuList.classList.remove('show');
+            menuToggle.classList.remove('open');
+
+            // Obtenha o destino do link
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Navegue até o destino do link
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 });

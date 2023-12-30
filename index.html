@@ -19,7 +19,7 @@
 <body>
     <header>
 
-       <!-- <nav>
+        <!-- <nav>
             <div class="logo2">
                 <img class="logo" src="conteudo/NasaDiscovery.svg" alt="logo website">
             </div>
@@ -51,14 +51,14 @@
             <div class="logo2">
                 <img class="logo" src="conteudo/NasaDiscovery.svg" alt="logo website">
             </div>
-        
+
             <div class="menu">
                 <div class="menu-toggle" id="menuToggle">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-        
+
                 <ul class="menulist">
                     <li>
                         <a href="#APOD">
@@ -80,7 +80,7 @@
             <hr />
         </nav>
 
-          <!---------------------Random apod para o header--------->
+        <!---------------------Random apod para o header--------->
         <div id="headerimg"></div>
     </header>
 
@@ -92,26 +92,32 @@
         </div>
 
         <!---------------------Last 3 images------------------------->
-      <!--  <div id="Latest">
+        <!--  <div id="Latest">
             <h2>Latest 3 images</h2>
             <div id="contentLatest3"></div>
         </div>-->
 
         <!---------------------Search date------------------------->
         <div id="Search">
-            <h2>Search a date</h2>
-            <div id="search-container">
-                <input type="text" id="searchInput" placeholder="YYYY-MM-DD">
-                <button onclick="performSearch()">Pesquisar</button>
+            <div id="search-space">
+                <h2>SEARCH A DATE</h2>
+                <div id="search-container">
+                    <input id="input-search" type="text" id="searchInput" placeholder="YYYY-MM-DD">
+                    <button id="search-btn" onclick="performSearch()">
+                        <img id="img-lupa" src="conteudo/lupa.svg" alt="Ícone de Pesquisa">
+                    </button>
+
+                </div>
             </div>
-            <div id="center">
-            <div id="displaysearch"></div></div>
+
+            <div id="displaysearch"></div>
+        </div>
         </div>
 
 
         <!---------------------Discover apod------------------------->
         <div id="Discover">
-            <h2>Discover</h2>
+            <h2>DISCOVER</h2>
             <div id="discover-filter">
                 <div id="filters">
 
@@ -160,9 +166,9 @@
             <div id="apod-container"></div>
         </div>
 
-        </main>
+    </main>
     <script src="script.js"></script>
 </body>
 
-    
+
 </html>
