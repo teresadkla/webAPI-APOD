@@ -372,7 +372,7 @@ hr {
     object-fit: cover;
     /* margin: 4%; */
 }
-
+/*
 #search-space {
     display: flex;
     align-items: flex-end;
@@ -384,7 +384,7 @@ hr {
     gap: 5px;
     justify-content: flex-end;
     margin-right: 4%;
-}
+}*/
 
 #search-btn{
     border-radius: 100%;
@@ -437,6 +437,18 @@ hr {
         margin-left: 35%;
         margin-top: -10%;
     }
+    #search-space {
+        display: flex;
+        align-items: flex-end;
+        gap: 30%;
+    
+    }
+    #search-container {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-end;
+        margin-right: 4%;
+    }
 }
 
 /* INTERMÉDIO/ TABLETS*/
@@ -456,6 +468,19 @@ hr {
         grid-row: 3/ span 1;
         height: fit-content;
         font-size: 0.9rem;
+    }
+
+    #search-space {
+        display: flex;
+        align-items: flex-end;
+        gap: 30%;
+    
+    }
+    #search-container {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-end;
+        margin-right: 4%;
     }
 
 }
@@ -545,7 +570,22 @@ hr {
 
 
     /*--------------------------------SEARCH APOD-------------------------------*/
-
+    #search-container {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-start;
+        margin-top: 6%;
+        margin-left: 6%;
+        
+    }
+    #input-search {
+        padding: 10px;
+        border: 2px solid var(--azul_escuro);
+        border-radius: 20px;
+        outline: none;
+        width: 60vw;
+        background-color: var(--claro);
+    }
     .apod-title {
         grid-column: 1 / span 10;
         grid-row: 1/ span 1;
@@ -568,6 +608,7 @@ hr {
         grid-row: 12/ span 1;
         font-size: 0.8rem;
     }
+
 
 
     /*--------------------------------SEARCH APOD-------------------------------*/
