@@ -445,7 +445,7 @@ hr {
         position: absolute;
         left: 3%;
         width: 100vw;
-        height: 100vh;
+        height: 112vh;
         background-color: var(--azul_escuro);
     }
 
@@ -465,7 +465,8 @@ hr {
     .menu-toggle {
         cursor: pointer;
         display: block;
-        padding: 4%;
+        margin-top: 20px;
+        padding: 20px;
         z-index: 15;
     }
 

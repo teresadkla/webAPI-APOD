@@ -346,4 +346,26 @@ document.addEventListener('DOMContentLoaded', function () {
         menuList.classList.toggle('show');
         menuToggle.classList.toggle('open');
     });
+
+    const menuLinks = document.querySelectorAll('.menulist a');
+
+    menuLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            // Feche o menu
+            menuList.classList.remove('show');
+            menuToggle.classList.remove('open');
+
+            // Obtenha o destino do link
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            // Navegue até o destino do link
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
