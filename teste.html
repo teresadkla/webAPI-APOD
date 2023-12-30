@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,10 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            img{
-                width:50%;
-                
-            }
+        }
+
+        img {
+            width: 50%;
         }
 
         .apod-image {
@@ -19,6 +20,7 @@
         }
     </style>
 </head>
+
 <body>
     <h1>Random APOD Images</h1>
     <button onclick="applyCategoryFilter('Stars')">Stars</button>
@@ -26,6 +28,41 @@
     <button onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
     <button onclick="applyCategoryFilter('Comet')">Comet</button>
     <button onclick="applyCategoryFilter('Sun')">Sun</button>
+
+    <select class="category" id="categorySelect" onchange="applyCategoryFilter(this.value);">
+        <option value="all">Solar System</option>
+        <option value="Sun">Sun</option>
+        <option value="Mercury">Mercury</option>
+        <option value="Earth">Earth</option>
+        <option value="Moon">Moon</option>
+        <option value="Mars">Mars</option>
+        <option value="Jupiter">Jupiter</option>
+        <option value="Saturn">Saturn</option>
+        <option value="Uranus">Uranus</option>
+        <option value="Neptunae">Neptunae</option>
+        <option value="Pluto">PLuto</option>
+    </select>
+
+    <select class="category" id="categorySelect2" onchange="applyCategoryFilter(this.value);">
+        <option value="all">Space Tech</option>
+        <option value="Rockets">Rockets</option>
+        <option value="Spacecraft">Spacecraft</option>
+        <option value="Space Stations">Space Stations</option>
+    </select>
+
+    <select class="category" id="categorySelect3" onchange="applyCategoryFilter(this.value);">
+        <option value="all">People</option>
+        <option value="Scientists">Scientists</option>
+        <option value="Astronauts">Astronauts</option>
+    </select>
+
+    <label for="orderBy">Order By:</label>
+    <select id="orderBy" onchange="applyOrderBy(this.value);">
+        <option value="random">Random</option>
+        <option value="latest">Most recent to old</option>
+        <option value="oldest">Oldest to most recent</option>
+    </select>
+
     <button onclick="resetFilter()">Reset Filter</button>
     <div id="apod-container"></div>
 
@@ -68,19 +105,50 @@
         // Função para renderizar uma única imagem APOD
         function renderApodImage(apodData) {
             const { title, date, explanation, url } = apodData;
+            // Limite de caracteres para mostrar inicialmente
+            const initialCharLimit = 270;
+            // Verifica se a explicação excede o limite de caracteres
+            const showSeeMore = explanation.length > initialCharLimit;
+            // Obtém a parte inicial ou completa da explicação
+            const truncatedExplanation = showSeeMore ? explanation.slice(0, initialCharLimit) + '...' : explanation;
+
             const apodImageHTML = `
-                <div class="apod-image">
-                    <h3>${title}</h3>
-                    <p>Date: ${date}</p>
-                    <img src="${url}" alt="${title}" style="max-width: 100%;">
-                    <p>${explanation}</p>
+                <div class="discoverapodlist">
+                    <h3 class="titlediscoverlist" >${title}</h3>
+                    <p class="datediscoverlist">Date: ${date}</p>
+                    <img src="${url}" alt="${title}" style="max-width: 100%;" class="imagediscoverlist">
+                    <p class="explanation-disc">${truncatedExplanation}</p>
+                    ${showSeeMore ? '<button onclick="toggleExplanation(this)">See More</button>' : ''}
                 </div>
             `;
+
             apodContainer.innerHTML += apodImageHTML;
+        }
+
+        // Função para exibir a explicação completa ou reduzir ao clicar no botão
+        function toggleExplanation(button) {
+            const apodImageDiv = button.parentElement;
+            const apodData = allApodImages.find(apod => apod.title === apodImageDiv.querySelector('h3').innerText);
+
+            if (apodData) {
+                const fullExplanation = apodData.explanation;
+                const existingExplanation = apodImageDiv.querySelector('.explanation-disc').innerHTML;
+
+                // Se o texto estiver expandido, reduz para os 270 caracteres iniciais
+                if (button.innerText === 'See Less') {
+                    const truncatedExplanation = fullExplanation.substring(0, 270) + '...';
+                    apodImageDiv.querySelector('.explanation-disc').innerHTML = truncatedExplanation;
+                    button.innerText = 'See More';
+                } else {  // Se o texto não estiver expandido, exibe a explicação completa
+                    apodImageDiv.querySelector('.explanation-disc').innerHTML = fullExplanation;
+                    button.innerText = 'See Less';
+                }
+            }
         }
 
         // Função para aplicar o filtro com base na categoria
         function applyCategoryFilter(category) {
+            console.log("Categoria selecionada:", category);
             const filteredImages = allApodImages.filter(apod => {
                 const titleLower = apod.title.toLowerCase();
                 const explanationLower = apod.explanation.toLowerCase();
@@ -88,6 +156,25 @@
             });
 
             renderApodImages(filteredImages);
+        }
+
+        // Função para aplicar a ordenação dos resultados
+        function applyOrderBy(orderBy) {
+            let sortedImages = [...allApodImages];
+
+            switch (orderBy) {
+                case 'latest':
+                    sortedImages.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'oldest':
+                    sortedImages.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                // Para 'random', mantém a ordem original
+                default:
+                    break;
+            }
+
+            renderApodImages(sortedImages);
         }
 
         // Função para redefinir o filtro e exibir todas as imagens
@@ -109,4 +196,5 @@
         document.addEventListener('DOMContentLoaded', initializeApodImages);
     </script>
 </body>
+
 </html>
