@@ -420,6 +420,82 @@ hr {
         font-size: 1.65rem;
     }
 
+    h4 {
+
+        font-size: 1.3rem;
+    }
+
+    hr {
+
+        display: none;
+    }
+
+    .logo {
+        width: 25%;
+        position: relative;
+        left: 5vw;
+        top: 4.2vh;
+        z-index: 15;
+    }
+
+
+    .menulist {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        left: 3%;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--azul_escuro);
+    }
+
+    .menulist.show {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        gap: 10vh;
+    }
+
+
+    .menulist li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        display: block;
+        padding: 4%;
+        z-index: 15;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--azul_claro2);
+        margin: 5px 0;
+        transition: 0.4s;
+        border-radius: 5px;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+
+
+
+    /*--------------------------------SEARCH APOD-------------------------------*/
+
     .apod-title {
         grid-column: 1 / span 10;
         grid-row: 1/ span 1;
@@ -464,19 +540,23 @@ hr {
     .searchdate {
         grid-column: 4/ span 10;
     }
+
     .searchexplanation {
         grid-column: 4/ span 6;
         grid-row: 5/ span 1;
         font-size: 0.8rem;
     }
+
     /*-----------------DISCOVER APOD --------------------------*/
     .discoverapodlist {
         width: 90%;
     }
+
     .titlediscoverlist {
         grid-column: 4/ span 10;
         grid-row: 1/ span 1;
     }
+
     .explanation-disc {
         grid-column: 1 / span 10;
         grid-row: 2/ span 6;
@@ -484,17 +564,20 @@ hr {
         margin-left: 3%;
         font-size: 0.8rem;
     }
+
     .datediscoverlist {
         grid-column: 4 / span 8;
         grid-row: 2/ span 1;
         margin-top: -20%;
         position: relative;
     }
+
     .seemore {
         grid-column: 9 / span 5;
         grid-row: 7/ span 4;
         font-size: 0.8rem;
     }
+
     .imgdiscover-container {
         width: 170px;
         height: 170px;

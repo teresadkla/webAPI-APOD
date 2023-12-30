@@ -334,3 +334,16 @@ async function initializeApodImages() {
 
 // Aguarde o carregamento do DOM antes de inicializar
 document.addEventListener('DOMContentLoaded', initializeApodImages);
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const menuList = document.querySelector('.menulist');
+
+    menuToggle.addEventListener('click', function () {
+        menuList.classList.toggle('show');
+        menuToggle.classList.toggle('open');
+    });
+});
