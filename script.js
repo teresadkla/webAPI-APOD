@@ -340,7 +340,7 @@ async function initializeApodImages() {
 document.addEventListener('DOMContentLoaded', initializeApodImages);
 
 
-
+/*-------------------------MENU HAMBURGUER----------------- */
 
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menuToggle');
@@ -373,3 +373,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var h4Elements = document.querySelectorAll("h4");
+        var hrElement = document.querySelector("hr");
+        var logo = document.querySelector(".logo");
+        var headerHeight = document.querySelector("header").offsetHeight;
+
+
+        // Verifica a posição do scroll ao rolar
+        window.addEventListener("scroll", function () {
+            h4Elements.forEach(function (h4Element) {
+                if (window.scrollY > headerHeight) {
+                    h4Element.classList.add("cor-no-scroll");
+                    hrElement.style.opacity = "0"; // Torna o hr completamente transparente
+                    logo.style.opacity = "0";
+                } else {
+                    h4Element.classList.remove("cor-no-scroll");
+                    hrElement.style.opacity = "1"; // Restaura a opacidade do hr
+                    logo.style.opacity = "1";
+                }
+            });
+        });
+    });
