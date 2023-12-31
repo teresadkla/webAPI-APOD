@@ -62,17 +62,17 @@
                 <ul class="menulist">
                     <li>
                         <a href="#APOD">
-                            <h4>Image of the day</h4>
+                            <h4 class="h4deskt">Image of the day</h4>
                         </a>
                     </li>
                     <li>
                         <a href="#Search">
-                            <h4>Search</h4>
+                            <h4 class="h4deskt">Search</h4>
                         </a>
                     </li>
                     <li>
                         <a href="#Discover">
-                            <h4>Discover</h4>
+                            <h4 class="h4deskt">Discover</h4>
                         </a>
                     </li>
                 </ul>
@@ -120,55 +120,62 @@
             <h2>DISCOVER</h2>
             <div id="discover-filter">
                 <div id="filters">
+                    <div id="buttons">
+                        <button class="category-btn" id="stars" onclick="applyCategoryFilter('Stars')">Stars</button>
+                        <button class="category-btn" id="galaxy"
+                            onclick="applyCategoryFilter('Galaxies')">Galaxies</button>
+                        <button class="category-btn" id="nebul"
+                            onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
+                        <button class="category-btn" id="comet" onclick="applyCategoryFilter('Comet')">Comet</button>
+                        <button class="category-btn" id="stars" onclick="applyCategoryFilter('Sun')">Sun</button>
+                    </div>
+                    <div id="selects">
+                        <select class="category" id="categorySelect" onchange="applyCategoryFilter(this.value);">
+                            <option value="all">Solar System</option>
+                            <option value="Sun">Sun</option>
+                            <option value="Mercury">Mercury</option>
+                            <option value="Earth">Earth</option>
+                            <option value="Moon">Moon</option>
+                            <option value="Mars">Mars</option>
+                            <option value="Jupiter">Jupiter</option>
+                            <option value="Saturn">Saturn</option>
+                            <option value="Uranus">Uranus</option>
+                            <option value="Neptunae">Neptunae</option>
+                            <option value="Pluto">PLuto</option>
+                        </select>
 
-                    <button class="category-btn" id="stars" onclick="applyCategoryFilter('Stars')">Stars</button>
-                    <button class="category-btn" id="galaxy" onclick="applyCategoryFilter('Galaxies')">Galaxies</button>
-                    <button class="category-btn" id="nebul" onclick="applyCategoryFilter('Nebulae')">Nebulae</button>
-                    <button class="category-btn" id="comet" onclick="applyCategoryFilter('Comet')">Comet</button>
-                    <button class="category-btn" id="stars" onclick="applyCategoryFilter('Sun')">Sun</button>
+                        <select class="category" id="categorySelect2" onchange="applyCategoryFilter(this.value);">
+                            <option value="all">Space Tech</option>
+                            <option value="Rockets">Rockets</option>
+                            <option value="Spacecraft">Spacecraft</option>
+                            <option value="Space Stations">Space Stations</option>
+                        </select>
 
-                    <select class="category" id="categorySelect" onchange="applyCategoryFilter(this.value);">
-                        <option value="all">Solar System</option>
-                        <option value="Sun">Sun</option>
-                        <option value="Mercury">Mercury</option>
-                        <option value="Earth">Earth</option>
-                        <option value="Moon">Moon</option>
-                        <option value="Mars">Mars</option>
-                        <option value="Jupiter">Jupiter</option>
-                        <option value="Saturn">Saturn</option>
-                        <option value="Uranus">Uranus</option>
-                        <option value="Neptunae">Neptunae</option>
-                        <option value="Pluto">PLuto</option>
-                    </select>
-
-                    <select class="category" id="categorySelect2" onchange="applyCategoryFilter(this.value);">
-                        <option value="all">Space Tech</option>
-                        <option value="Rockets">Rockets</option>
-                        <option value="Spacecraft">Spacecraft</option>
-                        <option value="Space Stations">Space Stations</option>
-                    </select>
-
-                    <select class="category" id="categorySelect3" onchange="applyCategoryFilter(this.value);">
-                        <option value="all">People</option>
-                        <option value="Scientists">Scientists</option>
-                        <option value="Astronauts">Astronauts</option>
-                    </select>
-                    <div id="ordena">
-                        <label for="orderBy">Order By: </label>
-                        <select id="orderBy" onchange="applyOrderBy(this.value);">
-                            <option value="random">Random</option>
-                            <option value="latest">Most recent to old</option>
-                            <option value="oldest">Oldest to most recent</option>
+                        <select class="category" id="categorySelect3" onchange="applyCategoryFilter(this.value);">
+                            <option value="all">People</option>
+                            <option value="Scientists">Scientists</option>
+                            <option value="Astronauts">Astronauts</option>
                         </select>
                     </div>
-                    <button id="Clean" onclick="resetFilter()">Clean</button>
+                    <div id="orderclean">
+                        <div id="ordena">
+                            <label for="orderBy">Order By: </label>
+                            <select id="orderBy" onchange="applyOrderBy(this.value);">
+                                <option value="random">Random</option>
+                                <option value="latest">Most recent to old</option>
+                                <option value="oldest">Oldest to most recent</option>
+                            </select>
+                        </div>
+                        <button id="Clean" onclick="resetFilter()">Clean</button>
+                    </div>
                 </div>
             </div>
             <div id="apod-container"></div>
         </div>
 
     </main>
-    <script src="script.js"></script>
+    <script src="api_script.js"></script>
+    <script src="geral.js"></script>
 </body>
 
 
