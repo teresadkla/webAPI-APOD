@@ -30,28 +30,27 @@
             console.error('Error fetching data:', error);
         });
 });
-
 */
 /*---------IMAGEM RANDOM DESDE 1995 PARA O HEADER-------------------- */
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
-    const apiUrl = 'https://api.nasa.gov/planetary/apod'; //APOD astronomy picture of the day
+    const apiUrl = 'https://api.nasa.gov/planetary/apod';
 
-    // Function to generate a random date in the YYYY-MM-DD format
+    //Gerar data random desde 1995
     function getRandomDate() {
-        const start = new Date('1995-06-16'); // APOD API start date
-        const end = new Date(); // Today's date
+        const start = new Date('1995-06-16'); // data de inicio da APO
+        const end = new Date(); // hoje
         const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-        return randomDate.toISOString().split('T')[0]; // Extract YYYY-MM-DD
+        return randomDate.toISOString().split('T')[0]; // obter YYYY-MM-DD
     }
 
     const randomDate = getRandomDate();
 
-    // Make a request to the NASA API with the random date
+    // Fazer request
     fetch(`${apiUrl}?api_key=${apiKey}&date=${randomDate}`)
         .then(response => response.json())
         .then(data => {
-            // Update the HTML content with NASA API data
+            // Obter os returns da api e dispor no html
             const contentDiv = document.getElementById('headerimg');
             contentDiv.innerHTML = `
              <img src="${data.url}" alt="${data.title}" style="max-width: 100%;" class="apod-image">
@@ -69,16 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
     const apiUrl = 'https://api.nasa.gov/planetary/apod'; // APOD astronomy picture of the day
 
-    // Obter a data atual no formato YYYY-MM-DD
+    //formato YYYY-MM-DD
     const today = new Date().toISOString().split('T')[0];
 
-    // Make a request to the NASA API with the current date
-    /*Request url*/
+    //aqui faz o request da data atual
     fetch(`${apiUrl}?api_key=${apiKey}&date=${today}`)
         .then(response => response.json())
         .then(data => {
-            // Update the HTML content with NASA API data
-            /*Returned fields*/
+            ta
+            //returned fields
             const contentDiv2 = document.getElementById('contentapod');
             contentDiv2.innerHTML = `
                 <h3 class="apod-title">${data.title}  </h3>
@@ -93,9 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Error fetching data:', error);
         });
 });
-
-/*-------------------------------------------------------------------------------------*/
-/*Repositório de todas as imagens sugeridad pela nasa onde se pode consultar as antigas e os temas das mesmas */
 
 
 /*-----------AS 3 IMAGENS MAIS RECENTES-------------------------------- */
@@ -165,13 +160,13 @@ const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';
 const apiUrl = 'https://api.nasa.gov/planetary/apod';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Adiciona um event listener ao botão de pesquisa
+    // event listener para o botão de pesquisa
     const searchBtn = document.getElementById('search-btn');
     searchBtn.addEventListener('click', performSearch);
 });
 
 function performSearch() {
-    // Move a obtenção do valor do input para dentro da função performSearch
+    //valor do input para dentro da função
     const searchTerm = document.getElementById('input-search').value;
     const searchUrl = `${apiUrl}?api_key=${apiKey}&date=${searchTerm}`;
 
@@ -181,7 +176,6 @@ function performSearch() {
             const contentDiv3 = document.getElementById('displaysearch');
             contentDiv3.innerHTML = '';
 
-            // A resposta da API é um único item, não uma coleção
             if (data) {
                 const imageUrl = data.url;
                 const title = data.title;
@@ -209,14 +203,15 @@ function performSearch() {
 
 
 /*------------------DISCOVER APOD E CATEFORIAS---------------------- */
+
 // Variáveis globais
 const apodApiUrl = 'https://api.nasa.gov/planetary/apod';
-       /* const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';/ // Substitua pelo seu próprio chave de API
-        */const numImages = 30;
+/* const apiKey = 'GDJgtLTGgdHHochkIV2HoE9oZxGkKCBk7yO9yi8U';*/
+const numImages = 30; //exemplificar com 30 imgs/ items
 const apodContainer = document.getElementById('apod-container');
-let allApodImages = [];
+let allApodImages = [];//criar array desses item
 
-// Função para buscar uma imagem APOD aleatória
+// buscar uma imagem APOD aleatória
 async function getRandomApodImage() {
     const date = randomDate();
     const apiUrl = `${apodApiUrl}?api_key=${apiKey}&date=${date}`;
@@ -230,28 +225,26 @@ async function getRandomApodImage() {
     }
 }
 
-// Função para gerar uma data aleatória dentro de um intervalo
+//data random
 function randomDate() {
-    const start = new Date('1995-06-16');  // APOD começou nesta data
+    const start = new Date('1995-06-16');
     const end = new Date();
     const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    return randomDate.toISOString().split('T')[0];  // Formato YYYY-MM-DD
+    return randomDate.toISOString().split('T')[0];
 }
 
-// Função para renderizar imagens APOD
+//renderizar imagens APOD ou seja os meus resultados
 function renderApodImages(images) {
     apodContainer.innerHTML = '';
     images.forEach(renderApodImage);
 }
 
-// Função para renderizar uma única imagem APOD
 function renderApodImage(apodData) {
     const { title, date, explanation, url } = apodData;
-    // Limite de caracteres para mostrar inicialmente
     const initialCharLimit = 270;
-    // Verifica se a explicação excede o limite de caracteres
+    //verificar se a explicação excede o limite de caracteres
     const showSeeMore = explanation.length > initialCharLimit;
-    // Obtém a parte inicial ou completa da explicação
+    //parte inicial + completa da explicação
     const truncatedExplanation = showSeeMore ? explanation.slice(0, initialCharLimit) + '...' : explanation;
 
     const apodImageHTML = `
@@ -269,7 +262,7 @@ function renderApodImage(apodData) {
     apodContainer.innerHTML += apodImageHTML;
 }
 
-// Função para exibir a explicação completa ou reduzir ao clicar no botão
+// exibir ou reduzir a explicação ao clicar no botão
 function toggleExplanation(button) {
     const apodImageDiv = button.parentElement;
     const apodData = allApodImages.find(apod => apod.title === apodImageDiv.querySelector('h3').innerText);
@@ -283,14 +276,14 @@ function toggleExplanation(button) {
             const truncatedExplanation = fullExplanation.substring(0, 270) + '...';
             apodImageDiv.querySelector('.explanation-disc').innerHTML = truncatedExplanation;
             button.innerText = 'See More';
-        } else {  // Se o texto não estiver expandido, exibe a explicação completa
+        } else {  // Se o texto não estiver expandido, mostra a explicação completa
             apodImageDiv.querySelector('.explanation-disc').innerHTML = fullExplanation;
             button.innerText = 'See Less';
         }
     }
 }
+/*----------APLICAÇÃO DE FILTRO----------- */
 
-// Função para aplicar o filtro com base na categoria
 function applyCategoryFilter(category) {
     console.log("Categoria selecionada:", category);
     const filteredImages = allApodImages.filter(apod => {
@@ -302,7 +295,7 @@ function applyCategoryFilter(category) {
     renderApodImages(filteredImages);
 }
 
-// Função para aplicar a ordenação dos resultados
+/*--------ORDENAR CRONOLÓGICAMENTE */
 function applyOrderBy(orderBy) {
     let sortedImages = [...allApodImages];
 
@@ -313,7 +306,7 @@ function applyOrderBy(orderBy) {
         case 'oldest':
             sortedImages.sort((a, b) => new Date(a.date) - new Date(b.date));
             break;
-        // Para 'random', mantém a ordem original
+        // Volta a random ou seja o estado inicial
         default:
             break;
     }
@@ -321,12 +314,10 @@ function applyOrderBy(orderBy) {
     renderApodImages(sortedImages);
 }
 
-// Função para redefinir o filtro e exibir todas as imagens
 function resetFilter() {
     renderApodImages(allApodImages);
 }
-
-// Função para inicializar a renderização de imagens APOD
+//funcção assincrona para poder ser realizada em segundo plano (carregamento)
 async function initializeApodImages() {
     for (let i = 0; i < numImages; i++) {
         const apodData = await getRandomApodImage();
@@ -336,63 +327,7 @@ async function initializeApodImages() {
     renderApodImages(allApodImages);
 }
 
-// Aguarde o carregamento do DOM antes de inicializar
+//carregamento antes de inicializar
 document.addEventListener('DOMContentLoaded', initializeApodImages);
 
 
-/*-------------------------MENU HAMBURGUER----------------- */
-
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menuToggle');
-    const menuList = document.querySelector('.menulist');
-
-    menuToggle.addEventListener('click', function () {
-        menuList.classList.toggle('show');
-        menuToggle.classList.toggle('open');
-    });
-
-    const menuLinks = document.querySelectorAll('.menulist a');
-
-    menuLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            // Feche o menu
-            menuList.classList.remove('show');
-            menuToggle.classList.remove('open');
-
-            // Obtenha o destino do link
-            const targetId = link.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            // Navegue até o destino do link
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var h4Elements = document.querySelectorAll("h4");
-        var hrElement = document.querySelector("hr");
-        var logo = document.querySelector(".logo");
-        var headerHeight = document.querySelector("header").offsetHeight;
-
-
-        // Verifica a posição do scroll ao rolar
-        window.addEventListener("scroll", function () {
-            h4Elements.forEach(function (h4Element) {
-                if (window.scrollY > headerHeight) {
-                    h4Element.classList.add("cor-no-scroll");
-                    hrElement.style.opacity = "0"; // Torna o hr completamente transparente
-                    logo.style.opacity = "0";
-                } else {
-                    h4Element.classList.remove("cor-no-scroll");
-                    hrElement.style.opacity = "1"; // Restaura a opacidade do hr
-                    logo.style.opacity = "1";
-                }
-            });
-        });
-    });
