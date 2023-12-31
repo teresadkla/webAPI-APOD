@@ -93,6 +93,7 @@ nav {
     position: relative;
     left: 5vw;
     top: 4.2vh;
+    transition: opacity 0.3s ease;
 }
 
 hr {
@@ -581,7 +582,7 @@ label {
         display: block;
         width: 25px;
         height: 3px;
-        background-color: var(--azul_claro2);
+        background-color: var(--azul_claro);
         margin: 5px 0;
         transition: 0.4s;
         border-radius: 5px;
