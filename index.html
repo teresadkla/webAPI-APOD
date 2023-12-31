@@ -9,15 +9,13 @@
 
     <!--para as fontes-->
     <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
-  
+
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="logo2">
-                <img class="logo" src="conteudo/NasaDiscovery.svg" alt="logo website">
-            </div>
+
 
             <div class="menu">
                 <div class="menu-toggle" id="menuToggle">
@@ -27,6 +25,11 @@
                 </div>
 
                 <ul class="menulist">
+                    <li>
+                        <div class="logodiv">
+                            <img class="logo" src="conteudo/NasaDiscovery.svg" alt="logo website">
+                        </div>
+                    </li>
                     <li>
                         <a href="#APOD">
                             <h4 class="h4deskt">Image of the day</h4>
@@ -125,20 +128,21 @@
                         </select>
                     </div>
                     <div id="orderclean">
-                        <div id="ordena">
-                            <label for="orderBy">Order By: </label>
-                            <select id="orderBy" onchange="applyOrderBy(this.value);">
-                                <option value="random">Random</option>
-                                <option value="latest">Most recent to old</option>
-                                <option value="oldest">Oldest to most recent</option>
-                            </select>
-                        </div>
+
+                        <label for="orderBy">Order By: </label>
+                        <select id="orderBy" onchange="applyOrderBy(this.value);">
+                            <option value="random">Random</option>
+                            <option value="latest">Most recent to old</option>
+                            <option value="oldest">Oldest to most recent</option>
+                        </select>
+
                         <button id="Clean" onclick="resetFilter()">Clean</button>
                     </div>
                 </div>
             </div>
             <div id="apod-container"></div>
         </div>
+        
 
     </main>
     <script src="api_script.js"></script>

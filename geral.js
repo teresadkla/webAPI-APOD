@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Verifica a posição do scroll
     window.addEventListener("scroll", function () {
         h4Elements.forEach(function (h4Element) {
-            if (window.scrollY > headerHeight) {
+            if (window.scrollY > headerHeight-40) {
                 h4Element.classList.add("cor-no-scroll");
                 hrElement.style.opacity = "0"; // Torna transparente
                 logo.style.opacity = "0";

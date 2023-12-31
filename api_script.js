@@ -75,14 +75,15 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch(`${apiUrl}?api_key=${apiKey}&date=${today}`)
         .then(response => response.json())
         .then(data => {
-            ta
+
             //returned fields
             const contentDiv2 = document.getElementById('contentapod');
             contentDiv2.innerHTML = `
                 <h3 class="apod-title">${data.title}  </h3>
                 <p class="apod-date">${data.date}</p>
                <div class="containerAPODimg"> 
-                <img src="${data.url}" alt="${data.title}" style="max-width: 100%;"  class="image2Apod">
+              ${data.media_type === 'image' ? `<img src="${data.url}" alt="${data.title}" style="max-width: 100%;" class="image2Apod">` : ''}
+              ${data.media_type === 'video' ? `<iframe src="${data.url}" frameborder="0" allowfullscreen class="image2Apod"></iframe>` : ''}
                 </div>
                 <p class="apod-explanation">${data.explanation}</p>
             `;
@@ -185,7 +186,10 @@ function performSearch() {
               <h3 class="searchtitle">${title}</h3>
               <p class="searchdate">${data.date}</p>
               <div class="containersearchIMG">
-              <img class="searchimg" src="${imageUrl}" alt="${title}">
+
+              ${data.media_type === 'image' ? `<img src="${data.url}" alt="${data.title}" style="max-width: 100%;" class="searchimg">` : ''}
+        ${data.media_type === 'video' ? `<iframe src="${data.url}" frameborder="0" allowfullscreen class="searchimg"></iframe>` : ''}
+             
               </div>
               <p class="searchexplanation">${data.explanation}</p>
             </div>
@@ -252,8 +256,8 @@ function renderApodImage(apodData) {
                     <h3 class="titlediscoverlist" >${title}</h3>
                     <p class="datediscoverlist">${date}</p>
                     <div class="imgdiscover-container">
-                    <img src="${url}" alt="${title}" style="max-width: 100%;" class="imagediscoverlist">
-                   </div>
+                    <img src="${url}" alt="${title}" style="max-width: 100%;" class="imagediscoverlist">                   
+                    </div>
                     <p class="explanation-disc">${truncatedExplanation}</p>
                     ${showSeeMore ? '<button class="seemore" onclick="toggleExplanation(this)">See More</button>' : ''}
                 </div>
