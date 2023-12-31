@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     var h4Elements = document.querySelectorAll(".h4deskt");
+    var toggleElement = document.querySelectorAll(".cor-span");
     var hrElement = document.querySelector("hr");
     var logo = document.querySelector(".logo");
     var headerHeight = document.querySelector("header").offsetHeight;
@@ -50,6 +51,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 h4Element.classList.remove("cor-no-scroll");
                 hrElement.style.opacity = "1";
                 logo.style.opacity = "1";
+            }
+        });
+    });
+
+    window.addEventListener("scroll", function () {
+        toggleElement.forEach(function (toggleElement) {
+            if (window.scrollY > headerHeight-100) {
+                toggleElement.classList.add("toggleScroll");
+            } else {
+                toggleElement.classList.remove("toggleScroll");
+               
             }
         });
     });
